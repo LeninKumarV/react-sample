@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import React,{ useState } from 'react';
 import './App.css';
+import Result from './Result';
+
 
 function App() {
+  const [term,setTerm]= useState("");
+ 
+  const changeValue=(e)=>{
+     setTerm(e.target.value)
+  }
+
+const systemValue=Math.floor((Math.random *10))+1;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='head'>
+        <label htmlFor='term'>Guess the number between 1 to 10 </label>
+      </div>
+      <br></br>
+      <>
+      <input 
+          type="text"
+          name={term}
+          id='term'
+          onChange={changeValue}
+        />
+      </>
+      <br></br>
+      <br></br>
+      <Result systemValue={systemValue} term={term} />
     </div>
   );
 }
